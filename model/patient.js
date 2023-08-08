@@ -19,12 +19,13 @@ const schema = new mongoose.Schema({
         required :true
     },
     email :{
-        type : String
+        type : String,
+        default : ""
     },
-    reports : {
-      type :  [],
-      default : []
-    }
+    reports :[{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "c-19"
+    }]
 },{
     timestamps : true
 });

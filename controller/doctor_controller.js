@@ -23,13 +23,14 @@ class doctorController{
                     message : "username already exiest.."
                 });
             }
-            const newdoctor = Doctor.create({
+            const newdoctor =await Doctor.create({
                 username : username,
                 name : name,
                 password :password
             });
             return res.status(200).json({
-                message : "Doctor Registation Successfull.."
+                message : "Doctor Registation Successfull..",
+                data : newdoctor
             });
 
             
