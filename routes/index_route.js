@@ -9,7 +9,8 @@ router.use("/doctor",require("./doctor_route"));
 router.use("/patient",require("./patient_route"));
 
 // ----------report route---------//
-router.post("/report/create/",require("../controller/report_controller").create);
+router.use("/report/",require("./report_route"));
+
 
 router.get("/",(req,res)=>{
     return res.status(200).json({

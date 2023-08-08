@@ -17,7 +17,7 @@ const schema = new mongoose.Schema(
             required :true,
             enum: ["Negetive", "Travelled-Quarantine", "Symptoms-Quarantine", "Positive-Admit"]
        },
-       date : {
+       test_date : {
         type : Date,
         default: Date.now
        }

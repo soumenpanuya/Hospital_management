@@ -54,6 +54,38 @@ class report{
 
     }
 
+    static status =async(req,res)=>{
+        try{
+            const status =req.params.status;
+
+            if (status == "Negetive" || status == "Positive" || status == "Symptoms-Quarantine" || status == "Positive-Admit"){
+                const report = await Report.find({status: status})
+                .populate("doctor", "name")
+                .populate("patient", "name");
+                if(report.length == 0){
+                    return res.status(200).json({
+                        message : "No result found... "
+                    }) 
+                }
+                return res.status(200).json({
+                    message : "Result found..",
+                    data : report
+                })
+            }else{
+                return res.status(400).json({
+                    message : "This is not a status type.. please enter.... Negetive or Travelled-Quarantine or Symptoms-Quarantine or Positive-Admit "
+                })
+            }
+            
+
+        }catch(err){
+            console.log(err);
+            return res.status(500).json({
+                message : "Internal server error.."
+            })
+        }
+    }
+
 
 }
 
