@@ -10,6 +10,10 @@ const app =express();
 // --------data base configure----------//
 const db = require("./config/mongoose");
 
+// ----------setting parser-----------//
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
 // --------- routes------------//
 app.use("/",require("./routes/index_route"));
 
