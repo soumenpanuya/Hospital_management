@@ -2,7 +2,7 @@ const mongoose =require("mongoose");
 
 const schema = new mongoose.Schema(
     {
-       doctor :{
+       CreatedByDoctor :{
             type : mongoose.Schema.Types.ObjectId,
             ref : "Doctor",
             required :true
@@ -15,9 +15,9 @@ const schema = new mongoose.Schema(
        status:{
             type :String,
             required :true,
-            enum: ["Negetive", "Travelled-Quarantine", "Symptoms-Quarantine", "Positive-Admit"]
+            enum: ["Negative", "Travelled-Quarantine", "Symptoms-Quarantine", "Positive-Admit"]
        },
-       test_date : {
+       Date : {
         type : Date,
         default: Date.now
        }

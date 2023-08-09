@@ -3,7 +3,8 @@
 const development ={
     name: "development",
     port : 1002,
-    db : "mongodb://127.0.0.1:27017/Hospital"
+    db : "mongodb://127.0.0.1:27017/Hospital",
+    jwtsecret : "secret"
 }
 
 
@@ -11,7 +12,8 @@ const development ={
 const production ={
     name: "production",
     port : process.env.port,
-    db : process.env.db
+    db : process.env.db,
+    jwtsecret : process.env.jwtsecret
 }
 
 

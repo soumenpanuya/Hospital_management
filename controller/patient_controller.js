@@ -6,29 +6,22 @@ class patientController{
     static registation = async (req,res)=>{
         try{
             
-            const {username, name, ph_no, email, password, confirm_password}= req.body;
-            if(!username || !name || !ph_no || !password || !confirm_password){
+            const {phone, name}= req.body;
+            if(!phone || !name ){
                 return res.status(400).json({
                     message : "All field required.."
                 })
             };
-            if(password != confirm_password){
-                return res.status(400).json({
-                    message :"password not match.."
-                })
-            }
-            const patient = await Patient.findOne({username :username});
+            const patient = await Patient.findOne({phone :phone});
             if(patient){
                 return res.status(400).json({
-                    message : "username already exiest.."
+                    message : "Patient already exiest..",
+                    data :patient
                 });
             }
             const newpatient =await Patient.create({
-                username : username,
-                name : name,
-                ph_no :ph_no,
-                email :email,
-                password :password
+                phone : phone,
+                name : name
             });
             return res.status(200).json({
                 message : "patient Registation Successfull..",

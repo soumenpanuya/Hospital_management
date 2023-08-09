@@ -14,6 +14,10 @@ const db = require("./config/mongoose");
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+// ----------Authentication-------------//
+const passport =require("passport");
+require("./config/passport");
+
 // --------- routes------------//
 app.use("/",require("./routes/index_route"));
 
